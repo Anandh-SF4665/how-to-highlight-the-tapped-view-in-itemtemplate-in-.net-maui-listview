@@ -1,0 +1,1 @@
+# how-to-highlight-the-tapped-view-in-itemtemplate-in-.net-maui-listview
