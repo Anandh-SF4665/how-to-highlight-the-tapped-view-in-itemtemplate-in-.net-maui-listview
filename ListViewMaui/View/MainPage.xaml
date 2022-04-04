@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListViewMaui.MainPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:local ="clr-namespace:ListViewMaui"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <ContentPage.BindingContext>
+        <local:ContactsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BackgroundColorConverter x:Key="backgroundColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <syncfusion:SfListView x:Name="listView"  ItemSpacing="1" 
+                            ItemSize="120" ItemsSource="{Binding contactsinfo}">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.Behaviors>
+                                <local:Behavior/>
+                            </Grid.Behaviors>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="2"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ContactImage}"/>
+                                <StackLayout Grid.Column="1" Margin="5,0,0,0" Padding="0, 10, 0, 0" >
+                                    <Label Text="{Binding ContactName}" VerticalOptions="Center" FontFamily="RobotoMedium"/>
+                                    <Label Text="{Binding ContactNumber}" VerticalOptions="Center" FontFamily="RobotoMedium"/>
+                                </StackLayout>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="0" Text="Availability" FontSize="15" FontFamily="RobotoMedium" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <Button x:Name="Button1" Margin="5" CornerRadius="15" Text="Busy" FontFamily="RobotoMedium" FontSize="15" BackgroundColor="{Binding Availability, Converter={StaticResource backgroundColorConverter}, ConverterParameter={x:Reference Button1}}" TextColor="Black" Grid.Column="1"/>
+                                <Button x:Name="Button2" Margin="5" CornerRadius="15" Text="Available" FontFamily="RobotoMedium" FontSize="15" BackgroundColor="{Binding Availability, Converter={StaticResource backgroundColorConverter}, ConverterParameter={x:Reference Button2}}" TextColor="Black" Grid.Column="2"/>
+                                <Button x:Name="Button3" Margin="5" CornerRadius="15" Text="Away" FontFamily="RobotoMedium" FontSize="15" BackgroundColor="{Binding Availability, Converter={StaticResource backgroundColorConverter}, ConverterParameter={x:Reference Button3}}" TextColor="Black" Grid.Column="3"/>
+                            </Grid>
+                            <StackLayout Grid.Row="2" BackgroundColor="DarkGray"/>
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

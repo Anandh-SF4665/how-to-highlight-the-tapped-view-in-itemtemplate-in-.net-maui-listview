@@ -1,0 +1,134 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>ListViewMaui</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+
+		<!-- Display name -->
+		<ApplicationTitle>ListViewMaui</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.listviewmaui</ApplicationId>
+		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">4A1E764D-26B2-47D7-BA37-F8ADC267491C</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<!-- Required for C# Hot Reload -->
+		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<!-- Required - WinUI does not yet have buildTransitive for everything -->
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\Image0.png" />
+	  <None Remove="Images\Image1.png" />
+	  <None Remove="Images\Image10.png" />
+	  <None Remove="Images\Image11.png" />
+	  <None Remove="Images\Image12.png" />
+	  <None Remove="Images\Image13.png" />
+	  <None Remove="Images\Image14.png" />
+	  <None Remove="Images\Image15.png" />
+	  <None Remove="Images\Image16.png" />
+	  <None Remove="Images\Image17.png" />
+	  <None Remove="Images\Image18.png" />
+	  <None Remove="Images\Image19.png" />
+	  <None Remove="Images\Image2.png" />
+	  <None Remove="Images\Image20.png" />
+	  <None Remove="Images\Image21.png" />
+	  <None Remove="Images\Image22.png" />
+	  <None Remove="Images\Image23.png" />
+	  <None Remove="Images\Image24.png" />
+	  <None Remove="Images\Image25.png" />
+	  <None Remove="Images\Image26.png" />
+	  <None Remove="Images\Image27.png" />
+	  <None Remove="Images\Image28.png" />
+	  <None Remove="Images\Image3.png" />
+	  <None Remove="Images\Image4.png" />
+	  <None Remove="Images\Image5.png" />
+	  <None Remove="Images\Image6.png" />
+	  <None Remove="Images\Image7.png" />
+	  <None Remove="Images\Image8.png" />
+	  <None Remove="Images\Image9.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Images\Image0.png" />
+	  <EmbeddedResource Include="Images\Image1.png" />
+	  <EmbeddedResource Include="Images\Image10.png" />
+	  <EmbeddedResource Include="Images\Image11.png" />
+	  <EmbeddedResource Include="Images\Image12.png" />
+	  <EmbeddedResource Include="Images\Image13.png" />
+	  <EmbeddedResource Include="Images\Image14.png" />
+	  <EmbeddedResource Include="Images\Image15.png" />
+	  <EmbeddedResource Include="Images\Image16.png" />
+	  <EmbeddedResource Include="Images\Image17.png" />
+	  <EmbeddedResource Include="Images\Image18.png" />
+	  <EmbeddedResource Include="Images\Image19.png" />
+	  <EmbeddedResource Include="Images\Image2.png" />
+	  <EmbeddedResource Include="Images\Image20.png" />
+	  <EmbeddedResource Include="Images\Image21.png" />
+	  <EmbeddedResource Include="Images\Image22.png" />
+	  <EmbeddedResource Include="Images\Image23.png" />
+	  <EmbeddedResource Include="Images\Image24.png" />
+	  <EmbeddedResource Include="Images\Image25.png" />
+	  <EmbeddedResource Include="Images\Image26.png" />
+	  <EmbeddedResource Include="Images\Image27.png" />
+	  <EmbeddedResource Include="Images\Image28.png" />
+	  <EmbeddedResource Include="Images\Image3.png" />
+	  <EmbeddedResource Include="Images\Image4.png" />
+	  <EmbeddedResource Include="Images\Image5.png" />
+	  <EmbeddedResource Include="Images\Image6.png" />
+	  <EmbeddedResource Include="Images\Image7.png" />
+	  <EmbeddedResource Include="Images\Image8.png" />
+	  <EmbeddedResource Include="Images\Image9.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Syncfusion.Maui.Core" Version="19.4.1.100" />
+	  <PackageReference Include="Syncfusion.Maui.DataSource" Version="19.4.1.7" />
+	  <PackageReference Include="Syncfusion.Maui.GridCommon" Version="19.4.1.4" />
+	  <PackageReference Include="Syncfusion.Maui.ListView" Version="19.4.1.54" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<OutputType>WinExe</OutputType>
+		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+	</PropertyGroup>
+	
+</Project>
