@@ -16,8 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <syncfusion:SfListView x:Name="listView"  ItemSpacing="1" 
+        <syncfusion:SfListView x:Name="listView"  ItemSpacing="1" 
                             ItemSize="120" ItemsSource="{Binding contactsinfo}">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -58,6 +57,5 @@
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
             </syncfusion:SfListView>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
